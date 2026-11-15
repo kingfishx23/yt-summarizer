@@ -1,19 +1,21 @@
-# agent-skills
+# yt-summarizer
 
-Personal skills for Claude Code (and other agents the `skills` CLI supports).
+A Claude Code skill (also usable by other agents the `skills` CLI supports) that summarizes a YouTube video from its transcript: a TL;DR, timestamped key points and takeaways. Paste a YouTube link and the agent does the rest.
 
-| Skill | What it does |
-|---|---|
-| [yt-summarizer](skills/yt-summarizer/SKILL.md) | Summarizes a YouTube video from its transcript. Needs Node 18+. |
+The transcript fetcher, `skills/yt-summarizer/index.js`, has no dependencies and needs Node 18+.
 
-## Install on a computer
+## Install
 
 ```sh
-npx skills add kingfishx23/agent-skills
+npx skills add kingfishx23/yt-summarizer
 ```
 
 Run the same command again to pull the latest version.
 
-## Add a skill
+## Use the script on its own
 
-Create `skills/<name>/SKILL.md` (with `name` and `description` frontmatter) plus any scripts it uses, commit and push. Other computers pick it up the next time they run `npx skills add`.
+```sh
+node skills/yt-summarizer/index.js <youtube-url-or-id> [--lang <code>]
+```
+
+It prints the title, channel, duration, caption language and the transcript in paragraphs marked `[mm:ss]`.
